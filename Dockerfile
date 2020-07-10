@@ -17,5 +17,10 @@ RUN npm install --save node-opcua
 # Bundle app source
 COPY . /usr/src/app/
 
+# TODO: replace this environment variable before compiling
+ENV DNS_ADDRESS="8.8.8.8"
+
+RUN eval 'echo „nameserver $DNS_ADDRESS“ > /etc/resolv.conf'
+
 EXPOSE 4840
 CMD [ "node", "app.js" ]
