@@ -12,12 +12,13 @@ COPY package*.json /usr/src/app/
 RUN npm install
 # If you are building your code for production
 # RUN npm ci --only=production
-RUN npm install --save node-opcua
+#RUN npm install --save node-opcua
+# Bundle app source
+COPY . /usr/src/app/
 
 RUN npm install
 
-# Bundle app source
-COPY . /usr/src/app/
+
 
 # TODO: replace this environment variable before compiling
 # ENV DNS_ADDRESS="8.8.8.8"
