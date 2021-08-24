@@ -118,13 +118,13 @@ class Skill {
     }
 
     initializeCurrentStateVariables() {
-        this.skill_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.String, value: "--" }, opcua.StatusCodes.Good, new Date());
-        this.cleared_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.String, value: "--" }, opcua.StatusCodes.Good, new Date());
-        this.running_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.String, value: "--" }, opcua.StatusCodes.Good, new Date());
-        this.idle_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.String, value: "--" }, opcua.StatusCodes.Good, new Date());
-        this.execute_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.String, value: "--" }, opcua.StatusCodes.Good, new Date());
-        this.hold_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.String, value: "--" }, opcua.StatusCodes.Good, new Date());
-        this.resetting_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.String, value: "--" }, opcua.StatusCodes.Good, new Date());
+        this.skill_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.LocalizedText, value: "--" }, opcua.StatusCodes.Good, new Date());
+        this.cleared_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.LocalizedText, value: "--" }, opcua.StatusCodes.Good, new Date());
+        this.running_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.LocalizedText, value: "--" }, opcua.StatusCodes.Good, new Date());
+        this.idle_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.LocalizedText, value: "--" }, opcua.StatusCodes.Good, new Date());
+        this.execute_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.LocalizedText, value: "--" }, opcua.StatusCodes.Good, new Date());
+        this.hold_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.LocalizedText, value: "--" }, opcua.StatusCodes.Good, new Date());
+        this.resetting_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.LocalizedText, value: "--" }, opcua.StatusCodes.Good, new Date());
     }
 
     initializeCurrentStateVariablesId() {
@@ -191,19 +191,19 @@ class Skill {
 
     updateOPCUAServerCurrentStateValues(skill_state) {
         // Skill State machine current state
-        this.skill_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.String, value: "--" },
+        this.skill_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.LocalizedText, value: "--" },
             opcua.StatusCodes.Good, new Date());
-        this.cleared_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.String, value: "--" },
+        this.cleared_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.LocalizedText, value: "--" },
             opcua.StatusCodes.Good, new Date());
-        this.running_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.String, value: "--" },
+        this.running_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.LocalizedText, value: "--" },
             opcua.StatusCodes.Good, new Date());
-        this.execute_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.String, value: "--" },
+        this.execute_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.LocalizedText, value: "--" },
             opcua.StatusCodes.Good, new Date());
-        this.hold_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.String, value: "--" },
+        this.hold_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.LocalizedText, value: "--" },
             opcua.StatusCodes.Good, new Date());
-        this.idle_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.String, value: "--" },
+        this.idle_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.LocalizedText, value: "--" },
             opcua.StatusCodes.Good, new Date());
-        this.resetting_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.String, value: "--" },
+        this.resetting_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.LocalizedText, value: "--" },
             opcua.StatusCodes.Good, new Date());
 
         // Skill State Machine Current State Id
@@ -216,7 +216,7 @@ class Skill {
         this.resetting_state_machine_cs_nid.setValueFromSource({ dataType: opcua.DataType.NodeId, value: new opcua.NodeId() }, opcua.StatusCodes.Good, new Date());
 
         if (hasOwnNestedProperty(this.skill_state_machine.current_state, "cleared")) {
-            this.skill_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.String, value: "cleared" },
+            this.skill_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.LocalizedText, value: "cleared" },
                 opcua.StatusCodes.Good, new Date());
             this.skill_state_machine_cs_nid.setValueFromSource({
                     dataType: opcua.DataType.NodeId,
@@ -225,7 +225,7 @@ class Skill {
                 opcua.StatusCodes.Good, new Date()
             );
             if (hasOwnNestedProperty(this.skill_state_machine.current_state, "cleared.running")) {
-                this.cleared_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.String, value: "running" },
+                this.cleared_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.LocalizedText, value: "running" },
                     opcua.StatusCodes.Good, new Date());
                 this.cleared_state_machine_cs_nid.setValueFromSource({
                         dataType: opcua.DataType.NodeId,
@@ -235,7 +235,7 @@ class Skill {
                 );
 
                 if (hasOwnNestedProperty(this.skill_state_machine.current_state, "cleared.running.resetting")) {
-                    this.running_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.String, value: "resetting" },
+                    this.running_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.LocalizedText, value: "resetting" },
                         opcua.StatusCodes.Good, new Date());
 
                     this.running_state_machine_cs_nid.setValueFromSource({
@@ -245,7 +245,7 @@ class Skill {
                         opcua.StatusCodes.Good, new Date()
                     );
 
-                    this.resetting_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.String, value: this.skill_state_machine.current_state.cleared.running.resetting },
+                    this.resetting_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.LocalizedText, value: this.skill_state_machine.current_state.cleared.running.resetting },
                         opcua.StatusCodes.Good, new Date());
 
                     this.resetting_state_machine_cs_nid.setValueFromSource({
@@ -255,7 +255,7 @@ class Skill {
                         opcua.StatusCodes.Good, new Date()
                     );
                 } else if (hasOwnNestedProperty(this.skill_state_machine.current_state, "cleared.running.idle")) {
-                    this.running_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.String, value: "idle" },
+                    this.running_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.LocalizedText, value: "idle" },
                         opcua.StatusCodes.Good, new Date());
                     this.running_state_machine_cs_nid.setValueFromSource({
                             dataType: opcua.DataType.NodeId,
@@ -263,7 +263,7 @@ class Skill {
                         },
                         opcua.StatusCodes.Good, new Date()
                     );
-                    this.idle_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.String, value: this.skill_state_machine.current_state.cleared.running.idle },
+                    this.idle_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.LocalizedText, value: this.skill_state_machine.current_state.cleared.running.idle },
                         opcua.StatusCodes.Good, new Date());
                     this.idle_state_machine_cs_nid.setValueFromSource({
                             dataType: opcua.DataType.NodeId,
@@ -272,7 +272,7 @@ class Skill {
                         opcua.StatusCodes.Good, new Date()
                     );
                 } else if (hasOwnNestedProperty(this.skill_state_machine.current_state, "cleared.running.hold")) {
-                    this.running_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.String, value: "hold" },
+                    this.running_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.LocalizedText, value: "hold" },
                         opcua.StatusCodes.Good, new Date());
                     this.running_state_machine_cs_nid.setValueFromSource({
                             dataType: opcua.DataType.NodeId,
@@ -280,7 +280,7 @@ class Skill {
                         },
                         opcua.StatusCodes.Good, new Date()
                     );
-                    this.hold_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.String, value: this.skill_state_machine.current_state.cleared.running.hold },
+                    this.hold_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.LocalizedText, value: this.skill_state_machine.current_state.cleared.running.hold },
                         opcua.StatusCodes.Good, new Date());
                     this.hold_state_machine_cs_nid.setValueFromSource({
                             dataType: opcua.DataType.NodeId,
@@ -289,7 +289,7 @@ class Skill {
                         opcua.StatusCodes.Good, new Date()
                     );
                 } else if (hasOwnNestedProperty(this.skill_state_machine.current_state, "cleared.running.execute")) {
-                    this.running_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.String, value: "execute" },
+                    this.running_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.LocalizedText, value: "execute" },
                         opcua.StatusCodes.Good, new Date());
                     this.running_state_machine_cs_nid.setValueFromSource({
                             dataType: opcua.DataType.NodeId,
@@ -297,7 +297,7 @@ class Skill {
                         },
                         opcua.StatusCodes.Good, new Date()
                     );
-                    this.execute_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.String, value: this.skill_state_machine.current_state.cleared.running.execute },
+                    this.execute_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.LocalizedText, value: this.skill_state_machine.current_state.cleared.running.execute },
                         opcua.StatusCodes.Good, new Date());
                     this.execute_state_machine_cs_nid.setValueFromSource({
                             dataType: opcua.DataType.NodeId,
@@ -306,7 +306,7 @@ class Skill {
                         opcua.StatusCodes.Good, new Date()
                     );
                 } else {
-                    this.running_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.String, value: this.skill_state_machine.current_state.cleared.running },
+                    this.running_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.LocalizedText, value: this.skill_state_machine.current_state.cleared.running },
                         opcua.StatusCodes.Good, new Date());
                     this.running_state_machine_cs_nid.setValueFromSource({
                             dataType: opcua.DataType.NodeId,
@@ -316,7 +316,7 @@ class Skill {
                     );
                 }
             } else {
-                this.cleared_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.String, value: this.skill_state_machine.current_state.cleared },
+                this.cleared_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.LocalizedText, value: this.skill_state_machine.current_state.cleared },
                     opcua.StatusCodes.Good, new Date());
                 this.cleared_state_machine_cs_nid.setValueFromSource({
                         dataType: opcua.DataType.NodeId,
@@ -326,7 +326,7 @@ class Skill {
                 );
             }
         } else {
-            this.skill_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.String, value: this.skill_state_machine.current_state },
+            this.skill_state_machine_cs.setValueFromSource({ dataType: opcua.DataType.LocalizedText, value: this.skill_state_machine.current_state },
                 opcua.StatusCodes.Good, new Date());
             this.skill_state_machine_cs_nid.setValueFromSource({
                     dataType: opcua.DataType.NodeId,
